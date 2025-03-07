@@ -31,4 +31,4 @@ class Schedule(models.Model):
     classroom_enviroment = models.ForeignKey(Enviroment, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.accountable_teacher_name
+        return self.enviroment_name
