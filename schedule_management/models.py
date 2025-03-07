@@ -1,23 +1,23 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
-class User(models.Model):
+class Teacher(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
     CHOICES = {
         'Pro': 'Professor',
         'Opp': 'Orientador de pp'
     }
     
     user_nif = models.IntegerField()
-    user_name = models.CharField(max_length=200)
+    username = models.CharField(max_length=200)
     user_email = models.EmailField(max_length=254)
     user_phone = models.CharField(max_length=20)
     user_role = models.CharField(max_length=3, choices=CHOICES, default='Pro')
 
-    def __str__(self):
-        return self.user_name
-
-class Teacher(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+class OPP(User):
+    pass
 
 class Enviroment(models.Model):
     enviroment_name = models.CharField(max_length=30)

@@ -1,3 +1,4 @@
+from .models import Enviroment
 from django.contrib.auth.models import User
 from rest_framework import serializers
 
@@ -13,3 +14,8 @@ class UserSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         user = User.objects.create_user(**validated_data)
         return user
+
+class Enviroment(serializers.ModelSerializer):
+    class Meta:
+        model = Enviroment
+        fields = ['enviroment_name']
